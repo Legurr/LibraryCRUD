@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div th:if="${#lists.isEmpty(books)}">
+    No books available.
+</div>
+<div th:each="book : ${books}">
+    <a th:href="@{books/{id}(id=${book.getId()})}"
+       th:text="${book.getTitle() + ', ' + book.getYear()}">User</a>
+</div>
+<br/>
+<a th:href="@{books/new}">Create a new book</a>
+<br/>
+<a th:href="@{people}">List of readers</a>
+<br/>
+<a th:href="@{books/search}">Find a book</a>
+</body>
+</html>
